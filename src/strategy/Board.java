@@ -18,7 +18,7 @@ public class Board {
         placePiece("H1", new ChessPiece("tour", Color.WHITE));
 
         for (int i = 0; i < 8; i++) {
-            String column = ChessUtils.COLUMNS.get(i);
+            String column = MovementUtils.COLUMNS.get(i);
             placePiece(column + "2", new ChessPiece("pion", Color.WHITE));
         }
 
@@ -32,7 +32,7 @@ public class Board {
         placePiece("H8", new ChessPiece("tour", Color.BLACK));
 
         for (int i = 0; i < 8; i++) {
-            String column = ChessUtils.COLUMNS.get(i);
+            String column = MovementUtils.COLUMNS.get(i);
             placePiece(column + "7", new ChessPiece("pion", Color.BLACK));
         }
     }
@@ -95,7 +95,7 @@ public class Board {
 
         System.out.println();
         System.out.print("    ");
-        for (String col : ChessUtils.COLUMNS) {
+        for (String col : MovementUtils.COLUMNS) {
             System.out.print(col + "   ");
         }
         System.out.println();
@@ -111,7 +111,7 @@ public class Board {
             System.out.print(row + " │");
 
             for (int col = 0; col < 8; col++) {
-                String column = ChessUtils.COLUMNS.get(col);
+                String column = MovementUtils.COLUMNS.get(col);
                 String position = column + row;
 
                 String cellContent = " ";
@@ -145,7 +145,7 @@ public class Board {
         System.out.println("┘");
 
         System.out.print("    ");
-        for (String col : ChessUtils.COLUMNS) {
+        for (String col : MovementUtils.COLUMNS) {
             System.out.print(col + "   ");
         }
         System.out.println();

@@ -7,7 +7,7 @@ public class RookStrategy implements IPieceStrategy {
     public static final String BLACK_ROOK = "♖";
     @Override
     public List<String> getAllowedPositions(String column, int row, Color color) {
-        return ChessUtils.getStraightPositions(column, row);
+        return MovementUtils.getStraightPositions(column, row);
     }
 
     @Override

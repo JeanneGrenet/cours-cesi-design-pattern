@@ -11,8 +11,8 @@ public class QueenStrategy implements IPieceStrategy {
     public List<String> getAllowedPositions(String column, int row, Color color) {
         List<String> allowedPositions = new ArrayList<>();
 
-        allowedPositions.addAll(ChessUtils.getStraightPositions(column, row));
-        allowedPositions.addAll(ChessUtils.getDiagonalPositions(column, row));
+        allowedPositions.addAll(MovementUtils.getStraightPositions(column, row));
+        allowedPositions.addAll(MovementUtils.getDiagonalPositions(column, row));
 
         return allowedPositions;
     }

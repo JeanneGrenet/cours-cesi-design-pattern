@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ChessUtils {
+public class MovementUtils {
     public static final ArrayList<String> COLUMNS = new ArrayList<>(Arrays.asList("A", "B", "C", "D", "E", "F", "G", "H"));
     public static final ArrayList<Integer> ROWS = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8));
 
