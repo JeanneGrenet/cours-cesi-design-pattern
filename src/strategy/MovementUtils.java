@@ -32,44 +32,69 @@ public class MovementUtils {
     /**
      * Obtient les positions en ligne droite
      */
-    public static List<String> getStraightPositions(String column, int row) {
+    public static List<String> getStraightPositions(String column, int row, Board board) {
         List<String> positions = new ArrayList<>();
+        int columnIndex = COLUMNS.indexOf(column);
 
-        for (String c : COLUMNS) {
-            if (!c.equals(column)) {
-                positions.add(c + row);
+        for (int[] dir : STRAIGHT_DIRECTIONS) {
+            int newColumnIndex = columnIndex;
+            int newRow = row;
+
+            while (true) {
+                newColumnIndex += dir[0];
+                newRow += dir[1];
+
+                if (newColumnIndex < 0 || newColumnIndex >= 8 || newRow < 1 || newRow > 8) {
+                    break;
+                }
+
+                String newPosition = COLUMNS.get(newColumnIndex) + newRow;
+                if (board.hasPiece(newPosition)) {
+                    ChessPiece targetPiece = board.getPiece(newPosition);
+                    ChessPiece sourcePiece = board.getPiece(column + row);
+                    if (targetPiece.getColor() != sourcePiece.getColor()) {
+                        positions.add(newPosition);
+                    }
+                }
+
+                positions.add(newPosition);
             }
         }
-
-        for (int r : ROWS) {
-            if (r != row) {
-                positions.add(column + r);
-            }
-        }
-
         return positions;
     }
 
     /**
      * Obtient les positions en diagonale
      */
-    public static List<String> getDiagonalPositions(String column, int row) {
+    public static List<String> getDiagonalPositions(String column, int row, Board board) {
         List<String> positions = new ArrayList<>();
         int columnIndex = COLUMNS.indexOf(column);
 
         for (int[] dir : DIAGONAL_DIRECTIONS) {
-            int cIndex = columnIndex;
-            int r = row;
+            int newColumnIndex = columnIndex;
+            int newRow = row;
 
             while (true) {
-                cIndex += dir[0];
-                r += dir[1];
+                newColumnIndex += dir[0];
+                newRow += dir[1];
 
-                if (cIndex < 0 || cIndex >= 8 || r < 1 || r > 8) {
+                if (newColumnIndex < 0 || newColumnIndex >= 8 || newRow < 1 || newRow > 8) {
                     break;
                 }
 
-                positions.add(COLUMNS.get(cIndex) + r);
+                String newPosition = COLUMNS.get(newColumnIndex) + newRow;
+                if (board.hasPiece(newPosition)) {
+                    ChessPiece targetPiece = board.getPiece(newPosition);
+                    ChessPiece sourcePiece = board.getPiece(column + row);
+
+
+                    if (targetPiece.getColor() != sourcePiece.getColor()) {
+                        positions.add(newPosition);
+                    }
+                    break;
+                }
+
+                positions.add(newPosition);
             }
         }
 

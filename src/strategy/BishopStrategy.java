@@ -7,8 +7,8 @@ public class BishopStrategy implements IPieceStrategy {
     public static final String WHITE_BISHOP = "♝";
 
     @Override
-    public List<String> getAllowedPositions(String column, int row, Color color) {
-        return MovementUtils.getDiagonalPositions(column, row);
+    public List<String> getAllowedPositions(String column, int row, Color color, Board board) {
+        return MovementUtils.getDiagonalPositions(column, row, board);
     }
 
     @Override

@@ -8,7 +8,7 @@ public class PawnStrategy implements IPieceStrategy {
     public static final String WHITE_PAWN = "♟";
 
     @Override
-    public List<String> getAllowedPositions(String column, int row, Color color) {
+    public List<String> getAllowedPositions(String column, int row, Color color, Board board) {
         List<String> allowedPositions = new ArrayList<>();
         int columnIndex = MovementUtils.COLUMNS.indexOf(column);
 

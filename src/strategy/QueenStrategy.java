@@ -8,11 +8,11 @@ public class QueenStrategy implements IPieceStrategy {
     public static final String WHITE_QUEEN = "♛";
 
     @Override
-    public List<String> getAllowedPositions(String column, int row, Color color) {
+    public List<String> getAllowedPositions(String column, int row, Color color, Board board) {
         List<String> allowedPositions = new ArrayList<>();
 
-        allowedPositions.addAll(MovementUtils.getStraightPositions(column, row));
-        allowedPositions.addAll(MovementUtils.getDiagonalPositions(column, row));
+        allowedPositions.addAll(MovementUtils.getStraightPositions(column, row, board));
+        allowedPositions.addAll(MovementUtils.getDiagonalPositions(column, row, board));
 
         return allowedPositions;
     }

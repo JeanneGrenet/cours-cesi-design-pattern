@@ -13,7 +13,7 @@ public class PieceContext {
         this.strategy = strategy;
     }
 
-    public List<String> getAllowedPositions(String column, int row, Color color) {
-        return strategy.getAllowedPositions(column, row, color);
+    public List<String> getAllowedPositions(String column, int row, Color color, Board board) {
+        return strategy.getAllowedPositions(column, row, color,board );
     }
 }

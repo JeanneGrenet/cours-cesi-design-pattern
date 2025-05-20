@@ -3,7 +3,7 @@ package strategy;
 import java.util.List;
 
 public interface IPieceStrategy {
-    List<String> getAllowedPositions(String column, int row, Color color);
+    List<String> getAllowedPositions(String column, int row, Color color, Board board);
 
     String getPieceSymbol(Color color);
 }

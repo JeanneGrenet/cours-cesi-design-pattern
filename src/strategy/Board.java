@@ -58,7 +58,7 @@ public class Board {
         int row = Integer.parseInt(fromPosition.substring(1));
 
         PieceContext context = new PieceContext(piece.getStrategy());
-        List<String> allowedMoves = context.getAllowedPositions(column, row, piece.getColor());
+        List<String> allowedMoves = context.getAllowedPositions(column, row, piece.getColor(), this);
 
         if (!allowedMoves.contains(toPosition)) {
             System.out.println("Ce mouvement n'est pas autorisé pour cette pièce!");
@@ -165,6 +165,6 @@ public class Board {
         int row = Integer.parseInt(position.substring(1));
 
         PieceContext context = new PieceContext(piece.getStrategy());
-        return context.getAllowedPositions(column, row, piece.getColor());
+        return context.getAllowedPositions(column, row, piece.getColor(), this);
     }
 }
