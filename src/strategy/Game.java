@@ -4,16 +4,24 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Game {
+    private static boolean isPlaying = true;
     public Game(){
+        while (isPlaying) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Entrez une pièce et une position (ex: 'tour B3') :");
 
         String input = scanner.nextLine().trim().toLowerCase();
         String[] parts = input.split(" ");
 
+        if (parts.length == 1 && parts[0].equals("exit")) {
+            System.out.println("Fin du jeu");
+            isPlaying = false;
+            return;
+        }
+
         if (parts.length != 2) {
             System.out.println("Format invalide. Exemple attendu : 'tour B3'");
-            return;
+            continue;
         }
 
         String piece = parts[0];
@@ -46,7 +54,8 @@ public class Game {
         for (String move : moves) {
             System.out.print(move + " ");
         }
-        System.out.println();
+        System.out.println("\n");
+        }
     }
 }
 
