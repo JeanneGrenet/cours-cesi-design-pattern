@@ -11,6 +11,7 @@ public class Game {
         while (isPlaying) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Entrez une pièce et une position (ex: 'tour B3') :");
+            System.out.println("Pour quitter, tapez 'exit'");
 
             String input = scanner.nextLine().trim().toLowerCase();
             String[] parts = input.split(" ");
@@ -32,6 +33,7 @@ public class Game {
             String column = position.substring(0, 1);
             int row = Integer.parseInt(position.substring(1));
             Color color = turn % 2 == 0 ? Color.WHITE : Color.BLACK;
+            String colorName = color == Color.WHITE ? "blancs" : "noirs";
 
             IPieceStrategy strategy = switch (piece) {
                 case "tour" -> new RookStrategy();
@@ -51,12 +53,18 @@ public class Game {
             PieceContext context = new PieceContext(strategy);
 
             List<String> moves = context.getAllowedPositions(column, row, color);
+            System.out.println("\n=== Tour " + (turn + 1) + " - " + colorName + " ===");
+            System.out.println("Déplacements possibles pour " + piece + " en " + position + " :");
 
-            System.out.println("Déplacements possibles pour la " + piece + " en " + position + " :");
-            for (String move : moves) {
-                System.out.print(move + " ");
+            if (moves.isEmpty()) {
+                System.out.println("Aucun mouvement possible");
+            } else {
+                for (String move : moves) {
+                    System.out.print(move + " ");
+                }
+                System.out.println();
             }
-            System.out.println("\n");
+            Board.displayBoard(column, row, moves);
             turn++;
         }
     }
